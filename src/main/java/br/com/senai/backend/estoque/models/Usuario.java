@@ -1,12 +1,14 @@
 package br.com.senai.backend.estoque.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,6 +30,13 @@ public class Usuario {
     
     @Column(name="cpf")
     private String cpf;
+
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Material> materiais;
+    
+    public Usuario(){
+    }
 
     public Usuario(Integer id, String nome, String cargo, LocalDate data_nascimento, String cpf) {
         this.id = id;
